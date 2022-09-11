@@ -1,12 +1,12 @@
 public class Init{
 
     public static void main(String[] args) throws InterruptedException {
-        String data = StartTest();
+        Boolean data = StartTest();
         System.out.println(data);
 
     }
 
-    static String StartTest() throws InterruptedException{
+    static Boolean StartTest() throws InterruptedException{
 
         Main main = new Main();
         String baseurl = "https://a101.com.tr";
@@ -38,7 +38,7 @@ public class Init{
         main.Click("/html/body/section/div[1]/div/div[1]/div[1]/div[2]/a");
 
 //      Mail adresi git
-        main.Write("/html/body/section/div[1]/div/div[2]/div/div/form/div[1]/input" , "test@mail.com");
+        main.Write("/html/body/section/div[1]/div/div[2]/div/div/form/div[1]/input" , System.currentTimeMillis()+"@mail.com");
 
 //      Devam butonu
         main.Click("/html/body/section/div[1]/div/div[2]/div/div/form/button");
@@ -47,43 +47,44 @@ public class Init{
         main.Click("/html/body/section/section/div/div[2]/div/div[1]/div/div[1]/div[2]/ul[2]/li/a");
 
 //      Adres başlığı
-        main.Write("/html/body/div[1]/div/div[2]/form/div[2]/div/div/label/input","Home");
+        main.Write("/html/body/div[1]/div/div[2]/form/div[2]/div/div/label/input",System.currentTimeMillis()+"");
 
 //      İsim
-        main.Write("/html/body/div[1]/div/div[2]/form/div[3]/div[1]/div/label/input","John");
+        main.Write("/html/body/div[1]/div/div[2]/form/div[3]/div[1]/div/label/input",System.currentTimeMillis()+"John");
 
 //      Soyisim
-        main.Write("/html/body/div[1]/div/div[2]/form/div[3]/div[2]/div/label/input","Doe");
+        main.Write("/html/body/div[1]/div/div[2]/form/div[3]/div[2]/div/label/input",System.currentTimeMillis()+"Doe");
 
 //      Telefon numarası
-        main.Write("/html/body/div[1]/div/div[2]/form/div[4]/div/div/label/input","1234567890");
+        main.Write("/html/body/div[1]/div/div[2]/form/div[4]/div/div/label/input","08796524311");
 
 //      il
-        main.Write("/html/body/div[1]/div/div[2]/form/div[5]/div[1]/div/label/div/select","ANKARA");
+        main.SelectBox("/html/body/div[1]/div/div[2]/form/div[5]/div[1]/div/label/div/select","İZMİR");
 
 //      İlçe
-        main.Write("/html/body/div[1]/div/div[2]/form/div[5]/div[2]/div/label/div/select","EVREN");
+        main.SelectBox("/html/body/div[1]/div/div[2]/form/div[5]/div[2]/div/label/div/select","BUCA");
 
 //      Mahalle
-        main.Write("/html/body/div[1]/div/div[2]/form/div[6]/label/div/select","MODERN MAH");
+        main.SelectBox("/html/body/div[1]/div/div[2]/form/div[6]/label/div/select","29 EKİM MAH");
 
 //      Adres
-        main.Write("/html/body/div[1]/div/div[2]/form/div[7]/label/textarea","i dont live in here.");
+        main.Write("/html/body/div[1]/div/div[2]/form/div[7]/label/textarea",System.currentTimeMillis()+"ev adresimi ekliyorum.");
 
 //      Posta kodu
-        main.Write("/html/body/div[1]/div/div[2]/form/div[8]/div/div/label/input","12345");
+        main.Write("/html/body/div[1]/div/div[2]/form/div[8]/div/div/label/input","56478");
 
 //      Kaydet
         main.Click("/html/body/div[1]/div/div[2]/form/button[1]");
 
 //      İlk kargo firmasını seç
-        main.Click("/html/body/section/section/div/div[2]/div/div[1]/div/div[2]/form/div[2]/div[2]/ul/li[1]/label/div[2]");
+        main.ClickCss("div[class='check']");
 
 //      Kaydet ve devam et
         main.Click("/html/body/section/section/div/div[2]/div/div[1]/div/div[2]/form/div[2]/button");
 
-        //Kart ekleme ve ödeme
-        String data = main.Check("/html/body/section/section/div/div[3]/div[1]/div[1]");
+
+//      Siparişi tmamala
+        Boolean data = main.Check("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[2]/div[2]/div[6]/button");
 
         main.StopBrowser();
 
